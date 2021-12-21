@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final audioPlayer = AssetsAudioPlayer();
   String filePath;
   bool _play = false;
-  String _recorderTxt = '00:00:00';
+  String _recorderTxt = 'Voice Recorder';
 
   @override
   void initState() {
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Center(
                   child: Text(
                     _recorderTxt,
-                    style: TextStyle(fontSize: 70),
+                    style: TextStyle(fontSize: 50),
                   ),
                 ),
               ),
@@ -128,27 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 20,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     buildElevatedButton(
-              //       icon: Icons.play_arrow,
-              //       iconColor: Colors.black,
-              //       f: startPlaying,
-              //     ),
-              //     SizedBox(
-              //       width: 30,
-              //     ),
-              //     buildElevatedButton(
-              //       icon: Icons.stop,
-              //       iconColor: Colors.black,
-              //       f: stopPlaying,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   elevation: 10.0,
@@ -241,6 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> startPlaying() async {
+    _recorderTxt = 'Player Started';
     audioPlayer.open(
       Audio.file(filePath),
       autoStart: true,
@@ -249,6 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> stopPlaying() async {
+    _recorderTxt = 'Player Stopped';
     audioPlayer.stop();
   }
 }
