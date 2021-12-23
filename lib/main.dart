@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Audio Recorder',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Audio Recorder Home Page'),
     );
   }
 }
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final audioPlayer = AssetsAudioPlayer();
   String filePath;
   bool _play = false;
-  String _recorderTxt = 'Voice Recorder';
+  String _recorderTxt = 'Audio Recorder';
 
   @override
   void initState() {
@@ -88,8 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 2, 199, 226),
-                      Color.fromARGB(255, 6, 75, 210)
+                      Colors.tealAccent,
+                      Colors.teal,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   buildElevatedButton(
                     icon: Icons.mic,
                     iconColor: Colors.red,
-                    f: record,
+                    onPress: record,
                   ),
                   SizedBox(
                     width: 30,
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   buildElevatedButton(
                     icon: Icons.stop,
                     iconColor: Colors.black,
-                    f: stopRecord,
+                    onPress: stopRecord,
                   ),
                 ],
               ),
@@ -166,12 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   ElevatedButton buildElevatedButton(
-      {IconData icon, Color iconColor, Function f}) {
+      {IconData icon, Color iconColor, Function onPress}) {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(5.0),
         side: BorderSide(
-          color: Colors.orange,
+          color: Colors.teal,
           width: 3.0,
         ),
         shape: RoundedRectangleBorder(
@@ -180,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
         primary: Colors.white,
         elevation: 10.0,
       ),
-      onPressed: f,
+      onPressed: onPress,
       icon: Icon(
         icon,
         color: iconColor,
